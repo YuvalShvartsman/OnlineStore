@@ -1,0 +1,44 @@
+.Item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column !important;
+  width: 175px !important;
+  height: 350px !important;
+  padding: 15px !important;
+}
+
+.ItemContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column !important;
+  width: 150px !important;
+}
+
+.ItemImage {
+  width: 125px !important;
+  height: 125px !important;
+}
+
+.ItemText {
+  display: flex;
+  align-items: center;
+  flex-direction: column !important;
+  margin-top: 5px;
+  height: 125px;
+  width: 135px !important;
+}
+
+.ReviewAndWatchBTN {
+  display: flex;
+  justify-content: space-around !important;
+  height: 20px;
+  width: 100%;
+}
+
+.WatchBTN {
+  width: 35px !important;
+  height: 15px !important;
+  font-size: 10px !important;
+}

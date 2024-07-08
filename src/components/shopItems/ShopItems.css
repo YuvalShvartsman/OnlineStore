@@ -1,0 +1,7 @@
+.Items {
+  position: absolute;
+  flex-grow: 1;
+  justify-content: center;
+  width: 88% !important;
+  right: 0;
+}

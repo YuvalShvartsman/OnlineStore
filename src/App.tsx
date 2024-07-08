@@ -1,7 +1,7 @@
-import Shop from "./components/shop/Shop";
+import MainPage from "./components/mainPage/MainPage";
 
 function App() {
-  return <Shop />;
+  return <MainPage />;
 }
 
 export default App;

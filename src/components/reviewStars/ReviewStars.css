@@ -1,0 +1,14 @@
+.RatingAndNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.Rating {
+  margin-bottom: 2.5px;
+}
+
+.RatingNumber {
+  font-size: 10px !important;
+}

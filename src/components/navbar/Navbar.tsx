@@ -2,7 +2,6 @@ import "./Navbar.css";
 
 import {
   Autocomplete,
-  Button,
   InputAdornment,
   TextField,
   Typography,
@@ -10,6 +9,7 @@ import {
 
 import { ecommerceItems } from "../data/ecommerceItems";
 import { LogoDev, Person, Search } from "@mui/icons-material";
+import { Button } from "antd";
 
 const ecommerceItemsDescs = ecommerceItems.map((item) => item.description);
 
@@ -46,7 +46,7 @@ function Navbar() {
         />
       </div>
       <div className="UserAndWatch">
-        <Button color="inherit">Watch</Button>
+        <Button size="small">Watch</Button>
         <Person className="PersonIcon" />
       </div>
     </div>

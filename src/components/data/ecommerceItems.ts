@@ -1,4 +1,4 @@
-import { EcommenrceItem } from "../../types/EcommerceItem";
+import { EcommenrceItem } from "../../types/EcommerceItems";
 
 export const ecommerceItems: EcommenrceItem[] = [
   {

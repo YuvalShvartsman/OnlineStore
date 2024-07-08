@@ -24,10 +24,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -65,4 +61,25 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* scroll bar for entire application */
+
+*::-webkit-scrollbar {
+  background-color: grey !important;
+  border-radius: 1rem;
+  margin-top: 10px 5px 10px 5px;
+  background-clip: padding-box;
+  width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: black !important;
+  border-radius: 1rem;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgb(58, 58, 58) !important;
+  background-clip: padding-box;
 }

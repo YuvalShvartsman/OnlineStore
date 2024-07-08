@@ -1,0 +1,51 @@
+.Navbar {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.561);
+  height: 100px;
+}
+
+.LogoAndName {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  margin-left: 5px;
+}
+
+.SearchBar {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.Search {
+  width: 45vw;
+}
+
+.UserAndWatch {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  width: 100px;
+  margin-right: 5px;
+}
+
+.PersonIcon {
+  border: 1px solid black;
+  border-radius: 30px;
+  margin-left: 5px;
+}

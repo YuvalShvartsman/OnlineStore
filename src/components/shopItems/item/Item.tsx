@@ -14,7 +14,7 @@ type ItemProps = {
 
 function Item({ item }: ItemProps) {
   return (
-    <Grid item xs={12} sm={6} md="auto" lg={2} key={item.id} className="Item">
+    <Grid item xs={12} sm={6} md="auto" lg={3} key={item.id} className="Item">
       <Card className="ItemContent">
         <Image src={NoImage} className="ItemImage" />
         <div className="ItemText">

@@ -4,7 +4,7 @@
   align-items: center;
   flex-direction: column !important;
   width: 20% !important;
-  height: 325px !important;
+  height: 400px !important;
   padding: 15px !important;
 }
 
@@ -14,6 +14,7 @@
   align-items: center;
   flex-direction: column !important;
   width: 98% !important;
+  height: 375px;
 }
 
 .ItemImage {
@@ -26,12 +27,12 @@
   flex-direction: column !important;
   margin-top: 5px;
   height: 125px;
-  width: 135px !important;
+  width: 98% !important;
 }
 
 .ReviewAndWatchBTN {
   display: flex;
-  justify-content: space-around !important;
+  justify-content: space-between !important;
   height: 20px;
   width: 100%;
 }

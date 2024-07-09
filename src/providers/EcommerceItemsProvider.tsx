@@ -1,21 +1,33 @@
 import { useCallback, ReactNode, useState, useEffect } from "react";
 
 import EcommerceItemsContext from "../context/EcommerceItemsContext";
-import { ecommerceItemsData } from "../data/ecommerceItems";
 import { EcommerceItem } from "../types/EcommerceItems";
 import { ValueToFilter } from "../types/ValueToFIlter";
+import api from "../AxiosConfig/axiosInstance";
 
 export const EcommerceItemsProvider = ({
   children,
 }: {
   children: Readonly<ReactNode>;
 }) => {
-  const [ecommerceItems] = useState<EcommerceItem[]>(ecommerceItemsData);
+  const [ecommerceItems, setEcommerceItems] = useState<EcommerceItem[]>([]);
 
   const [filteredEcommerceItems, setFilteredEcommerceItems] =
-    useState<EcommerceItem[]>(ecommerceItemsData);
+    useState<EcommerceItem[]>(ecommerceItems);
 
   const [valueToFilter, setValueToFilter] = useState<ValueToFilter>();
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await api.get("/api/items/");
+        setEcommerceItems(data);
+        setFilteredEcommerceItems(data);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   useEffect(() => {
     let tempItems = [...ecommerceItems];

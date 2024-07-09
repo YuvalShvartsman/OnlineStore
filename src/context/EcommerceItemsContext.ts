@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 import { EcommerceItem } from "../types/EcommerceItems";
-import { ecommerceItemsData } from "../data/ecommerceItems";
+// import { ecommerceItemsData } from "../data/ecommerceItems";
 import { ValueToFilter } from "../types/ValueToFIlter";
 
 type EcommerceContextProps = {
@@ -13,8 +13,8 @@ type EcommerceContextProps = {
 };
 
 const initialContextValue = {
-  ecommerceItems: ecommerceItemsData,
-  filteredEcommerceItems: ecommerceItemsData,
+  ecommerceItems: [],
+  filteredEcommerceItems: [],
   setValueToFilter: () => {},
 };
 

@@ -19,18 +19,6 @@
   margin-left: 5px;
 }
 
-.SearchBar {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.Search {
-  width: 45vw;
-}
-
 .UserAndWatch {
   height: 100%;
   display: flex;
@@ -40,7 +28,17 @@
   position: absolute;
   right: 0;
   width: 100px;
-  margin-right: 5px;
+  margin-right: 15px;
+}
+
+.NumberOfItems {
+  background-color: red !important;
+  border-radius: 50px !important;
+  width: 15px !important;
+  height: fit-content !important;
+  color: white !important;
+  margin: 1px;
+  font-size: 10px !important;
 }
 
 .PersonIcon {

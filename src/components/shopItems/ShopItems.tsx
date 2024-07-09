@@ -19,7 +19,7 @@ function ShopItems({ items }: ShopItemsProps) {
       <Filters />
       {items.length > 0
         ? items.map((item) => <Item item={item} key={item.id} />)
-        : "No items in this list"}
+        : "Could not find any items"}
       {}
     </Grid>
   );

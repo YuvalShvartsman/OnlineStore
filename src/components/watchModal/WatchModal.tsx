@@ -1,9 +1,11 @@
 import "./WatchModal.css";
 
-import ShopItems from "../shopItems/ShopItems";
 import { useContext } from "react";
-import { Modal } from "antd";
 import WatchItemsContext from "../../context/WatchItemsContext";
+
+import ShopItems from "../shopItems/ShopItems";
+
+import { Modal } from "antd";
 
 type WatchModalProps = {
   open: boolean;
@@ -21,8 +23,8 @@ function WatchModal({ handleClose, open }: WatchModalProps) {
       onOk={handleClose}
       className="WatchModal"
       title="Those are the items you've added to your watch list:"
-      children={<ShopItems items={ecommerceWatchItems} />}
-    ></Modal>
+      children={<ShopItems items={[...new Set(ecommerceWatchItems)]} />}
+    />
   );
 }
 

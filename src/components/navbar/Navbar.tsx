@@ -1,27 +1,22 @@
 import "./Navbar.css";
 
-import {
-  Autocomplete,
-  InputAdornment,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Typography } from "@mui/material";
 
-import { LogoDev, Person, Search } from "@mui/icons-material";
+import { LogoDev, Person } from "@mui/icons-material";
 import { Button } from "antd";
-import { BaseSyntheticEvent, useContext, useState } from "react";
-import EcommerceItemsContext from "../../context/EcommerceItemsContext";
+import { useContext, useState } from "react";
 import WatchModal from "../watchModal/WatchModal";
+import SearchBar from "./searchBar/SearchBar";
+import WatchItemsContext from "../../context/WatchItemsContext";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
 
   const handleClose = () => setOpen(false);
 
-  const { setValueToFilter, ecommerceItems } = useContext(
-    EcommerceItemsContext
-  );
-  const ecommerceItemsDescs = ecommerceItems.map((item) => item.description);
+  const { ecommerceWatchItems } = useContext(WatchItemsContext);
+
+  const amountOfItems = [...new Set(ecommerceWatchItems)].length;
 
   return (
     <div className="Navbar">
@@ -32,41 +27,11 @@ function Navbar() {
           YuvalShop
         </Typography>
       </div>
-      <div className="SearchBar">
-        <Autocomplete
-          className="Search"
-          options={ecommerceItemsDescs}
-          onInputChange={(_e, val, reason) =>
-            setValueToFilter((prev) => ({
-              ...prev,
-              desc: reason === "input" ? val : "",
-            }))
-          }
-          onSelect={(e: BaseSyntheticEvent) => {
-            setValueToFilter((prev) => ({ ...prev, desc: e.target.value }));
-          }}
-          renderInput={(params) => {
-            return (
-              <TextField
-                {...params}
-                label="Search options"
-                variant="outlined"
-                InputProps={{
-                  ...params.InputProps,
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Search />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            );
-          }}
-        />
-      </div>
+      <SearchBar />
       <div className="UserAndWatch">
         <Button size="small" onClick={() => setOpen(true)}>
-          Watch
+          Watch &nbsp;
+          <Typography className="NumberOfItems">{amountOfItems}</Typography>
         </Button>
         <Person className="PersonIcon" />
       </div>

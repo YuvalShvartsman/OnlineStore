@@ -1,0 +1,11 @@
+.LeftSideFilters {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.Filter {
+  width: 8vw !important;
+  height: 5vh !important;
+  margin: 5px;
+}

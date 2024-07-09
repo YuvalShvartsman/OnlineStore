@@ -1,0 +1,18 @@
+.Related {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
+.RelatedItem {
+  width: fit-content;
+  font-size: 10px;
+  border-radius: 20px;
+  background-color: rgb(172, 172, 172);
+  padding: 3px 10px 3px 10px;
+  margin: 3px;
+}

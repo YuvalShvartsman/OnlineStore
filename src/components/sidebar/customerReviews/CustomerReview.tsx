@@ -1,5 +1,5 @@
-import { Collapse } from "antd";
 import "./CustomerReview.css";
+import { Collapse } from "antd";
 import ReviewButton from "./reviewButton/ReviewButton";
 import { Grid } from "@mui/material";
 

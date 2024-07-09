@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { EcommenrceItem } from "../../types/EcommerceItems";
-import { ecommerceItems } from "../data/ecommerceItems";
+import { ecommerceItems } from "../../data/ecommerceItems";
 import Navbar from "../navbar/Navbar";
 import ShopItems from "../shopItems/ShopItems";
 import Sidebar from "../sidebar/Sidebar";

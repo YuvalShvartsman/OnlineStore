@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import { ecommerceItems } from "../data/ecommerceItems";
+import { ecommerceItems } from "../../data/ecommerceItems";
 import { LogoDev, Person, Search } from "@mui/icons-material";
 import { Button } from "antd";
 

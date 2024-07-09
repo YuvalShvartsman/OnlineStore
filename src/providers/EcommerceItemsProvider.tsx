@@ -31,7 +31,7 @@ export const EcommerceItemsProvider = ({
   const filterDataByPrice = useCallback((price: number) => {
     let temp = [...ecommerceItems];
 
-    temp = ecommerceItems.filter((item) => item.price > price);
+    temp = ecommerceItems.filter((item) => item.price < price);
 
     setFilteredEcommerceItems(temp);
   }, []);
@@ -44,7 +44,29 @@ export const EcommerceItemsProvider = ({
     setFilteredEcommerceItems(temp);
   }, []);
 
-  const sortData = useCallback((key: string) => {}, []);
+  const sortData = useCallback((key: string) => {
+    console.log(key);
+    const sortedItems = [...filteredEcommerceItems];
+    switch (key) {
+      case "The cheapest":
+        sortedItems.sort((a, b) => a.price - b.price);
+        setFilteredEcommerceItems(sortedItems);
+        break;
+
+      case "The most expensive":
+        sortedItems.sort((a, b) => b.price - a.price);
+        setFilteredEcommerceItems(sortedItems);
+        break;
+
+      case "Top rated":
+        sortedItems.sort((a, b) => b.review - a.review);
+        setFilteredEcommerceItems(sortedItems);
+        break;
+
+      default:
+        return filteredEcommerceItems;
+    }
+  }, []);
 
   return (
     <EcommerceItemsContext.Provider

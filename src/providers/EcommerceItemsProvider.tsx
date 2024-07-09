@@ -1,8 +1,9 @@
-import { useCallback, ReactNode, useState } from "react";
+import { useCallback, ReactNode, useState, useEffect } from "react";
 
 import EcommerceItemsContext from "../context/EcommerceItemsContext";
 import { ecommerceItemsData } from "../data/ecommerceItems";
 import { EcommerceItem } from "../types/EcommerceItems";
+import { ValueToFilter } from "../types/ValueToFIlter";
 
 export const EcommerceItemsProvider = ({
   children,
@@ -14,67 +15,85 @@ export const EcommerceItemsProvider = ({
   const [filteredEcommerceItems, setFilteredEcommerceItems] =
     useState<EcommerceItem[]>(ecommerceItemsData);
 
-  const filterData = useCallback(
-    (desc: string, reason?: string, price?: number) => {
-      let temp = [...ecommerceItems];
+  const [valueToFilter, setValueToFilter] = useState<ValueToFilter>();
+
+  useEffect(() => {
+    let tempItems = [...ecommerceItems];
+    console.log(valueToFilter?.price);
+    const filteredTempItems = tempItems.filter(
+      (item) =>
+        item.name.includes(valueToFilter?.desc ?? "") &&
+        item.price <= (valueToFilter?.price ?? 999) &&
+        item?.review >= (valueToFilter?.reviews ?? 4)
+    );
+    switch (valueToFilter?.sortBy) {
+      case "The cheapest":
+        filteredTempItems.sort((a, b) => a.price - b.price);
+        break;
+
+      case "The most expensive":
+        filteredTempItems.sort((a, b) => b.price - a.price);
+        break;
+
+      case "Top rated":
+        filteredTempItems.sort((a, b) => b.review - a.review);
+        break;
+    }
+    // console.log(valueToFilter?.desc);
+    // if (valueToFilter?.desc)
+    //   tempItems = filterDataByDesc(valueToFilter.desc, tempItems);
+    // if (valueToFilter?.price)
+    //   tempItems = filterDataByPrice(valueToFilter.price, tempItems);
+
+    setFilteredEcommerceItems(filteredTempItems);
+  }, [valueToFilter]);
+
+  const filterDataByDesc = useCallback(
+    (desc: string, tempItems: EcommerceItem[]) => {
       if (desc) {
-        if (reason === "reset") {
-          return setFilteredEcommerceItems(ecommerceItems);
-        }
-        temp = ecommerceItems.filter((item) => item.description.includes(desc));
+        tempItems = tempItems.filter((item) => item.description.includes(desc));
       }
-      setFilteredEcommerceItems(temp);
+      return tempItems;
     },
     []
   );
 
-  const filterDataByPrice = useCallback((price: number) => {
-    let temp = [...ecommerceItems];
+  const filterDataByPrice = useCallback(
+    (price: number, tempItems: EcommerceItem[]) => {
+      return tempItems.filter((item) => item.price <= price);
+    },
+    []
+  );
 
-    temp = ecommerceItems.filter((item) => item.price < price);
+  const filterDataByReviews = useCallback(
+    (stars: number, tempItems: EcommerceItem[]) => {
+      tempItems = tempItems.filter((item) => item.review >= stars);
+      return tempItems;
+    },
+    []
+  );
 
-    setFilteredEcommerceItems(temp);
-  }, []);
-
-  const filterDataByReviews = useCallback((stars: number) => {
-    let temp = [...ecommerceItems];
-
-    temp = ecommerceItems.filter((item) => item.review > stars);
-
-    setFilteredEcommerceItems(temp);
-  }, []);
-
-  const sortData = useCallback((key: string) => {
+  const sortData = useCallback((key: string, tempItems: EcommerceItem[]) => {
     console.log(key);
-    const sortedItems = [...filteredEcommerceItems];
     switch (key) {
       case "The cheapest":
-        sortedItems.sort((a, b) => a.price - b.price);
-        setFilteredEcommerceItems(sortedItems);
-        break;
+        return { ...tempItems }.sort((a, b) => a.price - b.price);
 
       case "The most expensive":
-        sortedItems.sort((a, b) => b.price - a.price);
-        setFilteredEcommerceItems(sortedItems);
-        break;
+        return { ...tempItems }.sort((a, b) => b.price - a.price);
 
       case "Top rated":
-        sortedItems.sort((a, b) => b.review - a.review);
-        setFilteredEcommerceItems(sortedItems);
-        break;
+        return { ...tempItems }.sort((a, b) => b.review - a.review);
 
       default:
-        return filteredEcommerceItems;
+        return { ...tempItems };
     }
   }, []);
 
   return (
     <EcommerceItemsContext.Provider
       value={{
-        filterData,
-        sortData,
-        filterDataByPrice,
-        filterDataByReviews,
+        setValueToFilter,
         filteredEcommerceItems,
         ecommerceItems,
       }}

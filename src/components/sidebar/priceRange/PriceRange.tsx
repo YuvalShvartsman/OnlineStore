@@ -6,7 +6,7 @@ import { useContext } from "react";
 import EcommerceItemsContext from "../../../context/EcommerceItemsContext";
 
 function PriceRange() {
-  const { ecommerceItems, filterDataByPrice } = useContext(
+  const { ecommerceItems, setValueToFilter } = useContext(
     EcommerceItemsContext
   );
   const prices = ecommerceItems.map((item) => item.price);
@@ -22,7 +22,9 @@ function PriceRange() {
           className="Slider"
           orientation="horizontal"
           size="small"
-          onChange={(_e, newValue) => filterDataByPrice(newValue as number)}
+          onChange={(_e, newValue) =>
+            setValueToFilter((prev) => ({ ...prev, price: newValue as number }))
+          }
           min={lowestPrice}
           max={heightstPrice}
           valueLabelDisplay="auto"

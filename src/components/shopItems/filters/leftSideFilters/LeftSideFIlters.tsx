@@ -1,10 +1,8 @@
-import { Button, Dropdown, Flex, Select, Space } from "antd";
+import { Button, Dropdown, Flex, Space } from "antd";
 import "./LeftSideFilters.css";
 import { useContext, useState } from "react";
 import EcommerceItemsContext from "../../../../context/EcommerceItemsContext";
 import { ItemType } from "antd/es/menu/interface";
-
-const { Option } = Select;
 
 const selectKeys: ItemType[] = [
   { key: "The cheapest", label: "The cheapest" },
@@ -13,7 +11,7 @@ const selectKeys: ItemType[] = [
 ];
 
 function LeftSideFIlters() {
-  const { sortData } = useContext(EcommerceItemsContext);
+  const { setValueToFilter } = useContext(EcommerceItemsContext);
   const [chosenValue, setChosenValue] = useState<string>("Sort by");
 
   return (
@@ -23,7 +21,7 @@ function LeftSideFIlters() {
         menu={{
           items: selectKeys,
           onClick: (e) => {
-            sortData(e.key);
+            setValueToFilter((prev) => ({ ...prev, sortBy: e.key }));
             setChosenValue(e.key);
           },
         }}

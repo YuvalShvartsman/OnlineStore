@@ -12,14 +12,16 @@ type ReviewButtonProps = {
 };
 
 function ReviewButton({ nubmerOfStars }: ReviewButtonProps) {
-  const { filterDataByReviews } = useContext(EcommerceItemsContext);
+  const { setValueToFilter } = useContext(EcommerceItemsContext);
 
   return (
     <Grid item xs={12} sm={6} md="auto" key={nubmerOfStars}>
       <Button
         size="small"
         className="ReviewButton"
-        onClick={() => filterDataByReviews(nubmerOfStars)}
+        onClick={() =>
+          setValueToFilter((prev) => ({ ...prev, reviews: nubmerOfStars }))
+        }
       >
         <ReviewStars numberOfStars={nubmerOfStars} /> & up
       </Button>

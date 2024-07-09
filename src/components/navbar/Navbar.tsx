@@ -13,7 +13,9 @@ import { BaseSyntheticEvent, useContext } from "react";
 import EcommerceItemsContext from "../../context/EcommerceItemsContext";
 
 function Navbar() {
-  const { filterData, ecommerceItems } = useContext(EcommerceItemsContext);
+  const { setValueToFilter, ecommerceItems } = useContext(
+    EcommerceItemsContext
+  );
   const ecommerceItemsDescs = ecommerceItems.map((item) => item.description);
 
   return (
@@ -28,8 +30,15 @@ function Navbar() {
         <Autocomplete
           className="Search"
           options={ecommerceItemsDescs}
-          onInputChange={(_e, val, reason) => filterData(val, reason)}
-          onSelect={(e: BaseSyntheticEvent) => filterData(e.target.value)}
+          onInputChange={(_e, val, reason) =>
+            setValueToFilter((prev) => ({
+              ...prev,
+              desc: reason === "input" ? val : "",
+            }))
+          }
+          onSelect={(e: BaseSyntheticEvent) => {
+            setValueToFilter((prev) => ({ ...prev, desc: e.target.value }));
+          }}
           renderInput={(params) => {
             return (
               <TextField

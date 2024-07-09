@@ -2,23 +2,20 @@ import { createContext } from "react";
 
 import { EcommerceItem } from "../types/EcommerceItems";
 import { ecommerceItemsData } from "../data/ecommerceItems";
+import { ValueToFilter } from "../types/ValueToFIlter";
 
 type EcommerceContextProps = {
   ecommerceItems: EcommerceItem[];
   filteredEcommerceItems: EcommerceItem[];
-  filterData: (key: string, reason?: string) => void;
-  filterDataByPrice: (price: number) => void;
-  filterDataByReviews: (stars: number) => void;
-  sortData: (key: string) => void;
+  setValueToFilter: React.Dispatch<
+    React.SetStateAction<ValueToFilter | undefined>
+  >;
 };
 
 const initialContextValue = {
   ecommerceItems: ecommerceItemsData,
   filteredEcommerceItems: ecommerceItemsData,
-  filterData: () => {},
-  filterDataByPrice: () => {},
-  filterDataByReviews: () => {},
-  sortData: () => {},
+  setValueToFilter: () => {},
 };
 
 const EcommerceItemsContext =

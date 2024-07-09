@@ -3,13 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 8px !important;
 }
 
 .SliderContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid rgb(96, 96, 96);
+  border: 2px solid rgb(152, 152, 152);
   width: 90%;
 }
 

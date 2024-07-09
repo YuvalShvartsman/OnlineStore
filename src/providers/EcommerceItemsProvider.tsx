@@ -14,13 +14,26 @@ export const EcommerceItemsProvider = ({
   const [filteredEcommerceItems, setFilteredEcommerceItems] =
     useState<EcommerceItem[]>(ecommerceItemsData);
 
-  const filterData = useCallback((key: string, reason?: string) => {
-    if (reason === "reset") {
-      return setFilteredEcommerceItems(ecommerceItems);
-    }
-    const temp = ecommerceItems.filter((item) =>
-      item.description.includes(key)
-    );
+  const filterData = useCallback(
+    (desc: string, reason?: string, price?: number) => {
+      let temp = [...ecommerceItems];
+      if (desc) {
+        if (reason === "reset") {
+          return setFilteredEcommerceItems(ecommerceItems);
+        }
+        temp = ecommerceItems.filter((item) => item.description.includes(desc));
+      }
+      setFilteredEcommerceItems(temp);
+    },
+    []
+  );
+
+  const filterDataByPrice = useCallback((price: number) => {
+    console.log(price);
+    let temp = [...ecommerceItems];
+
+    temp = ecommerceItems.filter((item) => item.price > price);
+
     setFilteredEcommerceItems(temp);
   }, []);
 
@@ -28,7 +41,13 @@ export const EcommerceItemsProvider = ({
 
   return (
     <EcommerceItemsContext.Provider
-      value={{ filterData, sortData, filteredEcommerceItems, ecommerceItems }}
+      value={{
+        filterData,
+        sortData,
+        filterDataByPrice,
+        filteredEcommerceItems,
+        ecommerceItems,
+      }}
     >
       {children}
     </EcommerceItemsContext.Provider>

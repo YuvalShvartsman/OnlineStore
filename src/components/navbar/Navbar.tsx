@@ -28,12 +28,8 @@ function Navbar() {
         <Autocomplete
           className="Search"
           options={ecommerceItemsDescs}
-          onInputChange={(_e, val, reason) => {
-            filterData(val, reason);
-          }}
-          onSelect={(e: BaseSyntheticEvent) => {
-            filterData(e.target.value);
-          }}
+          onInputChange={(_e, val, reason) => filterData(val, reason)}
+          onSelect={(e: BaseSyntheticEvent) => filterData(e.target.value)}
           renderInput={(params) => {
             return (
               <TextField

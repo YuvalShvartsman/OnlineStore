@@ -10,6 +10,8 @@ export const EcommerceItemsProvider = ({
 }: {
   children: Readonly<ReactNode>;
 }) => {
+  const [loading, setLoading] = useState<boolean>(true);
+
   const [ecommerceItems, setEcommerceItems] = useState<EcommerceItem[]>([]);
 
   const [filteredEcommerceItems, setFilteredEcommerceItems] =

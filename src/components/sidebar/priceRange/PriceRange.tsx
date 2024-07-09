@@ -2,7 +2,7 @@ import "./PriceRange.css";
 
 import { Slider } from "@mui/material";
 import { Typography } from "antd";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import EcommerceItemsContext from "../../../context/EcommerceItemsContext";
 
 function PriceRange() {
@@ -10,14 +10,16 @@ function PriceRange() {
     EcommerceItemsContext
   );
   const prices = ecommerceItems.map((item) => item.price);
-  const heightstPrice = Math.max(...prices);
+  const highestPrice = Math.max(...prices);
   const lowestPrice = Math.min(...prices);
+
+  const [highestAndLowest] = useState({ highestPrice, lowestPrice });
 
   return (
     <div className="PriceRange">
       <Typography.Text>Price Range Selected</Typography.Text>
       <div className="SliderContainer">
-        {lowestPrice}$
+        {highestAndLowest.lowestPrice}$
         <Slider
           className="Slider"
           orientation="horizontal"
@@ -25,11 +27,11 @@ function PriceRange() {
           onChange={(_e, newValue) =>
             setValueToFilter((prev) => ({ ...prev, price: newValue as number }))
           }
-          min={lowestPrice}
-          max={heightstPrice}
+          min={highestAndLowest.lowestPrice}
+          max={highestAndLowest.highestPrice}
           valueLabelDisplay="auto"
         ></Slider>
-        {heightstPrice}$
+        {highestAndLowest.highestPrice}$
       </div>
     </div>
   );

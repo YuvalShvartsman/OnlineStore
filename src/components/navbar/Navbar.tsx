@@ -7,11 +7,11 @@ import {
   Typography,
 } from "@mui/material";
 
-import { ecommerceItems } from "../../data/ecommerceItems";
+import { ecommerceItemsData } from "../../data/ecommerceItems";
 import { LogoDev, Person, Search } from "@mui/icons-material";
 import { Button } from "antd";
 
-const ecommerceItemsDescs = ecommerceItems.map((item) => item.description);
+const ecommerceItemsDescs = ecommerceItemsData.map((item) => item.description);
 
 function Navbar() {
   return (

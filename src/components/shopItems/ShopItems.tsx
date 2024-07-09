@@ -1,18 +1,23 @@
 import "./ShopItems.css";
 
-import { EcommenrceItem } from "../../types/EcommerceItems";
-import Item from "./item/Item";
-import { Grid } from "@mui/material";
-import Filters from "./filters/Filters";
-type ShopItemsProps = {
-  items: EcommenrceItem[];
-};
+import { useContext } from "react";
 
-function ShopItems({ items }: ShopItemsProps) {
+import { EcommerceItem } from "../../types/EcommerceItems";
+
+import Item from "./item/Item";
+
+import { Grid } from "@mui/material";
+
+import Filters from "./filters/Filters";
+import EcommerceItemsContext from "../../context/EcommerceItemsContext";
+
+function ShopItems() {
+  const { filteredEcommereceItems } = useContext(EcommerceItemsContext);
+
   return (
     <Grid container className="Items">
       <Filters />
-      {items.map((item) => (
+      {filteredEcommereceItems.map((item) => (
         <Item item={item} />
       ))}
     </Grid>

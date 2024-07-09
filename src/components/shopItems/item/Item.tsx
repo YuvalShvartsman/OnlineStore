@@ -2,14 +2,14 @@ import "./Item.css";
 
 import { Button, Image } from "antd";
 
-import { EcommenrceItem } from "../../../types/EcommerceItems";
+import { EcommerceItem } from "../../../types/EcommerceItems";
 
 import NoImage from "/itemImage.jpg";
 import { Card, Grid, Typography } from "@mui/material";
 import ReviewStars from "../../reviewStars/ReviewStars";
 
 type ItemProps = {
-  item: EcommenrceItem;
+  item: EcommerceItem;
 };
 
 function Item({ item }: ItemProps) {

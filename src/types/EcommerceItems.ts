@@ -1,6 +1,6 @@
 import { Shipping } from "./Shipping";
 
-export type EcommenrceItem = {
+export type EcommerceItem = {
   id: number;
   name: string;
   price: number;

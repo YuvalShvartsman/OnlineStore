@@ -1,6 +1,6 @@
-import { EcommenrceItem } from "../../types/EcommerceItems";
+import { EcommerceItem } from "../types/EcommerceItems";
 
-export const ecommerceItems: EcommenrceItem[] = [
+export const ecommerceItemsData: EcommerceItem[] = [
   {
     id: 1,
     name: "Laptop",

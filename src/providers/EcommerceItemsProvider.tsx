@@ -5,6 +5,8 @@ import { EcommerceItem } from "../types/EcommerceItems";
 import { ValueToFilter } from "../types/ValueToFIlter";
 import api from "../AxiosConfig/axiosInstance";
 
+import Swal from "sweetalert2";
+
 export const EcommerceItemsProvider = ({
   children,
 }: {
@@ -25,8 +27,14 @@ export const EcommerceItemsProvider = ({
         const { data } = await api.get("/api/items/");
         setEcommerceItems(data);
         setFilteredEcommerceItems(data);
+        setLoading(false);
       } catch (error) {
-        console.log(error);
+        setLoading(false);
+        Swal.fire({
+          title: "Error!",
+          text: "Items failed loading",
+          icon: "error",
+        });
       }
     })();
   }, []);
@@ -87,6 +95,7 @@ export const EcommerceItemsProvider = ({
         setValueToFilter,
         filteredEcommerceItems,
         ecommerceItems,
+        loading,
       }}
     >
       {children}

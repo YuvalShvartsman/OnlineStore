@@ -10,12 +10,14 @@ type EcommerceContextProps = {
   setValueToFilter: React.Dispatch<
     React.SetStateAction<ValueToFilter | undefined>
   >;
+  loading: boolean;
 };
 
 const initialContextValue = {
   ecommerceItems: [],
   filteredEcommerceItems: [],
   setValueToFilter: () => {},
+  loading: false,
 };
 
 const EcommerceItemsContext =

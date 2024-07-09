@@ -6,17 +6,24 @@ import Navbar from "../navbar/Navbar";
 import ShopItems from "../shopItems/ShopItems";
 import Sidebar from "../sidebar/Sidebar";
 import EcommerceItemsContext from "../../context/EcommerceItemsContext";
+import Loading from "../loading/Loading";
 
 function MainPage() {
-  const { filteredEcommerceItems } = useContext(EcommerceItemsContext);
+  const { filteredEcommerceItems, loading } = useContext(EcommerceItemsContext);
 
   return (
     <>
-      <Navbar />
-      <div className="ShopAndSidebar">
-        <Sidebar />
-        <ShopItems items={filteredEcommerceItems} />
-      </div>
+      {!loading ? (
+        <>
+          <Navbar />
+          <div className="ShopAndSidebar">
+            <Sidebar />
+            <ShopItems items={filteredEcommerceItems} />
+          </div>
+        </>
+      ) : (
+        <Loading />
+      )}
     </>
   );
 }

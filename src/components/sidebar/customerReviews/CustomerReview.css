@@ -1,0 +1,22 @@
+.CustomerReviews {
+  width: 100%;
+  margin-top: 10%;
+}
+
+.CustomerPanel {
+  font-size: 1vw !important;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.CollapseContent {
+  display: flex;
+  flex-grow: 1;
+}
+
+.ReviewButton {
+  font-size: 14px !important;
+  text-align: center;
+}

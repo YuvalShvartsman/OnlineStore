@@ -1,0 +1,21 @@
+.PriceRange {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.SliderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(96, 96, 96);
+  width: 90%;
+}
+
+.Slider {
+  display: flex;
+  color: black !important;
+  width: 100%;
+  margin: 0 15px 0 15px;
+}

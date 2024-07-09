@@ -12,13 +12,13 @@ import Filters from "./filters/Filters";
 import EcommerceItemsContext from "../../context/EcommerceItemsContext";
 
 function ShopItems() {
-  const { filteredEcommereceItems } = useContext(EcommerceItemsContext);
+  const { filteredEcommerceItems } = useContext(EcommerceItemsContext);
 
   return (
     <Grid container className="Items">
       <Filters />
-      {filteredEcommereceItems.map((item) => (
-        <Item item={item} />
+      {filteredEcommerceItems.map((item) => (
+        <Item item={item} key={item.id} />
       ))}
     </Grid>
   );

@@ -7,13 +7,15 @@ import {
   Typography,
 } from "@mui/material";
 
-import { ecommerceItemsData } from "../../data/ecommerceItems";
 import { LogoDev, Person, Search } from "@mui/icons-material";
 import { Button } from "antd";
-
-const ecommerceItemsDescs = ecommerceItemsData.map((item) => item.description);
+import { BaseSyntheticEvent, useContext } from "react";
+import EcommerceItemsContext from "../../context/EcommerceItemsContext";
 
 function Navbar() {
+  const { filterData, ecommerceItems } = useContext(EcommerceItemsContext);
+  const ecommerceItemsDescs = ecommerceItems.map((item) => item.description);
+
   return (
     <div className="Navbar">
       <div className="LogoAndName">
@@ -26,6 +28,12 @@ function Navbar() {
         <Autocomplete
           className="Search"
           options={ecommerceItemsDescs}
+          onInputChange={(_e, val, reason) => {
+            filterData(val, reason);
+          }}
+          onSelect={(e: BaseSyntheticEvent) => {
+            filterData(e.target.value);
+          }}
           renderInput={(params) => {
             return (
               <TextField

@@ -5,14 +5,14 @@ import { ecommerceItemsData } from "../data/ecommerceItems";
 
 type EcommerceContextProps = {
   ecommerceItems: EcommerceItem[];
-  filteredEcommereceItems: EcommerceItem[];
-  filterData: (key: string) => void;
+  filteredEcommerceItems: EcommerceItem[];
+  filterData: (key: string, reason?: string) => void;
   sortData: (key: string) => void;
 };
 
 const initialContextValue = {
   ecommerceItems: ecommerceItemsData,
-  filteredEcommereceItems: ecommerceItemsData,
+  filteredEcommerceItems: ecommerceItemsData,
   filterData: () => {},
   sortData: () => {},
 };

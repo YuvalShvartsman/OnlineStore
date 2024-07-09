@@ -3,8 +3,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column !important;
-  width: 175px !important;
-  height: 350px !important;
+  width: 20% !important;
+  height: 325px !important;
   padding: 15px !important;
 }
 
@@ -13,12 +13,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column !important;
-  width: 150px !important;
+  width: 98% !important;
 }
 
 .ItemImage {
-  width: 125px !important;
-  height: 125px !important;
+  width: 100% !important;
 }
 
 .ItemText {

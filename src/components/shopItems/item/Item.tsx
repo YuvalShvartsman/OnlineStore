@@ -4,7 +4,7 @@ import { Button, Image } from "antd";
 
 import { EcommerceItem } from "../../../types/EcommerceItems";
 
-import NoImage from "/itemImage.jpg";
+import NoImage from "/images.jpg";
 import { Card, Grid, Typography } from "@mui/material";
 import ReviewStars from "../../reviewStars/ReviewStars";
 
@@ -14,7 +14,7 @@ type ItemProps = {
 
 function Item({ item }: ItemProps) {
   return (
-    <Grid item xs={12} sm={6} md="auto" key={item.id} className="Item">
+    <Grid item xs={12} sm={6} md="auto" lg={2} key={item.id} className="Item">
       <Card className="ItemContent">
         <Image src={NoImage} className="ItemImage" />
         <div className="ItemText">

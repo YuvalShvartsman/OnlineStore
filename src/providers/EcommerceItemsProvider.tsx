@@ -19,41 +19,23 @@ export const EcommerceItemsProvider = ({
 
   useEffect(() => {
     let tempItems = [...ecommerceItems];
-    console.log(valueToFilter?.price);
-    const filteredTempItems = tempItems.filter(
-      (item) =>
-        item.name.includes(valueToFilter?.desc ?? "") &&
-        item.price <= (valueToFilter?.price ?? 999) &&
-        item?.review >= (valueToFilter?.reviews ?? 4)
-    );
-    switch (valueToFilter?.sortBy) {
-      case "The cheapest":
-        filteredTempItems.sort((a, b) => a.price - b.price);
-        break;
+    if (valueToFilter?.desc)
+      tempItems = filterDataByDesc(valueToFilter.desc, tempItems);
+    if (valueToFilter?.price)
+      tempItems = filterDataByPrice(valueToFilter.price, tempItems);
+    if (valueToFilter?.reviews)
+      tempItems = filterDataByReviews(valueToFilter.reviews, tempItems);
+    if (valueToFilter?.sortBy)
+      tempItems = sortData(valueToFilter.sortBy, tempItems);
 
-      case "The most expensive":
-        filteredTempItems.sort((a, b) => b.price - a.price);
-        break;
-
-      case "Top rated":
-        filteredTempItems.sort((a, b) => b.review - a.review);
-        break;
-    }
-    // console.log(valueToFilter?.desc);
-    // if (valueToFilter?.desc)
-    //   tempItems = filterDataByDesc(valueToFilter.desc, tempItems);
-    // if (valueToFilter?.price)
-    //   tempItems = filterDataByPrice(valueToFilter.price, tempItems);
-
-    setFilteredEcommerceItems(filteredTempItems);
+    setFilteredEcommerceItems(tempItems);
   }, [valueToFilter]);
 
   const filterDataByDesc = useCallback(
     (desc: string, tempItems: EcommerceItem[]) => {
-      if (desc) {
-        tempItems = tempItems.filter((item) => item.description.includes(desc));
-      }
-      return tempItems;
+      return tempItems.filter((item) =>
+        item.description.toLowerCase().includes(desc)
+      );
     },
     []
   );
@@ -67,26 +49,21 @@ export const EcommerceItemsProvider = ({
 
   const filterDataByReviews = useCallback(
     (stars: number, tempItems: EcommerceItem[]) => {
-      tempItems = tempItems.filter((item) => item.review >= stars);
-      return tempItems;
+      return tempItems.filter((item) => item.review > stars);
     },
     []
   );
 
   const sortData = useCallback((key: string, tempItems: EcommerceItem[]) => {
-    console.log(key);
     switch (key) {
       case "The cheapest":
-        return { ...tempItems }.sort((a, b) => a.price - b.price);
-
+        return tempItems.sort((a, b) => a.price - b.price);
       case "The most expensive":
-        return { ...tempItems }.sort((a, b) => b.price - a.price);
-
+        return tempItems.sort((a, b) => b.price - a.price);
       case "Top rated":
-        return { ...tempItems }.sort((a, b) => b.review - a.review);
-
+        return tempItems.sort((a, b) => b.review - a.review);
       default:
-        return { ...tempItems };
+        return tempItems;
     }
   }, []);
 

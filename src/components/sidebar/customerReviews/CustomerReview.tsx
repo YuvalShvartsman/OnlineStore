@@ -17,7 +17,7 @@ function CustomerReview() {
         >
           <Grid container className="CollapseContent">
             {starsOptios.map((number) => (
-              <ReviewButton nubmerOfStars={number} />
+              <ReviewButton nubmerOfStars={number} key={number} />
             ))}
           </Grid>
         </Panel>

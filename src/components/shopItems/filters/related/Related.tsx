@@ -18,7 +18,9 @@ function Related() {
       </Typography>
 
       {relatedList.map((name) => (
-        <div className="RelatedItem">{name}</div>
+        <div className="RelatedItem" key={name}>
+          {name}
+        </div>
       ))}
     </div>
   );

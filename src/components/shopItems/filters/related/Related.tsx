@@ -1,5 +1,6 @@
-import { Typography } from "@mui/material";
 import "./Related.css";
+
+import { Typography } from "@mui/material";
 
 const relatedList = [
   "world-wide shipping",

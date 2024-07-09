@@ -7,7 +7,7 @@ import { EcommerceItem } from "../../../types/EcommerceItems";
 import NoImage from "/images.jpg";
 import { Card, Grid, Typography } from "@mui/material";
 import ReviewStars from "../../reviewStars/ReviewStars";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import WatchItemsContext from "../../../context/WatchItemsContext";
 
 type ItemProps = {
@@ -15,11 +15,12 @@ type ItemProps = {
 };
 
 function Item({ item }: ItemProps) {
+  const [isWatched, setIsWatched] = useState<boolean>(false);
   const { setEcommerceWatchItems, ecommerceWatchItems } =
     useContext(WatchItemsContext);
   return (
-    <Grid item xs={12} sm={6} md="auto" lg={3} key={item.id} className="Item">
-      <Card className="ItemContent">
+    <Grid item xs={12} sm={6} md="auto" lg={2} key={item.id} className="Item">
+      <div className="ItemContent">
         <Image src={NoImage} className="ItemImage" />
         <div className="ItemText">
           <Typography
@@ -40,15 +41,16 @@ function Item({ item }: ItemProps) {
         <div className="ReviewAndWatchBTN">
           <ReviewStars numberOfStars={item.review} />
           <Button
+            onFocus={() => setIsWatched(true)}
             className="WatchBTN"
             onClick={() =>
               setEcommerceWatchItems([...ecommerceWatchItems, item])
             }
           >
-            Watch
+            Watch {isWatched && "♥"}
           </Button>
         </div>
-      </Card>
+      </div>
     </Grid>
   );
 }

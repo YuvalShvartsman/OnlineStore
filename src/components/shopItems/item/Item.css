@@ -34,11 +34,10 @@
   display: flex;
   justify-content: space-between !important;
   height: 20px;
-  width: 100%;
+  width: 98%;
 }
 
 .WatchBTN {
-  width: 35px !important;
-  height: 15px !important;
+  height: 20px !important;
   font-size: 10px !important;
 }

@@ -9,10 +9,15 @@ import {
 
 import { LogoDev, Person, Search } from "@mui/icons-material";
 import { Button } from "antd";
-import { BaseSyntheticEvent, useContext } from "react";
+import { BaseSyntheticEvent, useContext, useState } from "react";
 import EcommerceItemsContext from "../../context/EcommerceItemsContext";
+import WatchModal from "../watchModal/WatchModal";
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => setOpen(false);
+
   const { setValueToFilter, ecommerceItems } = useContext(
     EcommerceItemsContext
   );
@@ -20,6 +25,7 @@ function Navbar() {
 
   return (
     <div className="Navbar">
+      <WatchModal open={open} handleClose={handleClose} />
       <div className="LogoAndName">
         <LogoDev />
         <Typography fontSize={25} fontWeight={600}>
@@ -59,7 +65,9 @@ function Navbar() {
         />
       </div>
       <div className="UserAndWatch">
-        <Button size="small">Watch</Button>
+        <Button size="small" onClick={() => setOpen(true)}>
+          Watch
+        </Button>
         <Person className="PersonIcon" />
       </div>
     </div>

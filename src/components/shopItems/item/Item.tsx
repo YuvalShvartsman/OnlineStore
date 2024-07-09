@@ -7,12 +7,16 @@ import { EcommerceItem } from "../../../types/EcommerceItems";
 import NoImage from "/images.jpg";
 import { Card, Grid, Typography } from "@mui/material";
 import ReviewStars from "../../reviewStars/ReviewStars";
+import { useContext } from "react";
+import WatchItemsContext from "../../../context/WatchItemsContext";
 
 type ItemProps = {
   item: EcommerceItem;
 };
 
 function Item({ item }: ItemProps) {
+  const { setEcommerceWatchItems, ecommerceWatchItems } =
+    useContext(WatchItemsContext);
   return (
     <Grid item xs={12} sm={6} md="auto" lg={3} key={item.id} className="Item">
       <Card className="ItemContent">
@@ -35,7 +39,14 @@ function Item({ item }: ItemProps) {
         </div>
         <div className="ReviewAndWatchBTN">
           <ReviewStars numberOfStars={item.review} />
-          <Button className="WatchBTN">Watch</Button>
+          <Button
+            className="WatchBTN"
+            onClick={() =>
+              setEcommerceWatchItems([...ecommerceWatchItems, item])
+            }
+          >
+            Watch
+          </Button>
         </div>
       </Card>
     </Grid>

@@ -1,6 +1,4 @@
 .Sidebar {
-  position: absolute;
-  left: 0;
-  width: 12%;
+  width: 14% !important;
   height: 100%;
 }

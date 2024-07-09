@@ -2,24 +2,25 @@ import "./ShopItems.css";
 
 import { useContext } from "react";
 
-import { EcommerceItem } from "../../types/EcommerceItems";
-
 import Item from "./item/Item";
 
 import { Grid } from "@mui/material";
 
 import Filters from "./filters/Filters";
-import EcommerceItemsContext from "../../context/EcommerceItemsContext";
+import { EcommerceItem } from "../../types/EcommerceItems";
 
-function ShopItems() {
-  const { filteredEcommerceItems } = useContext(EcommerceItemsContext);
+type ShopItemsProps = {
+  items: EcommerceItem[];
+};
 
+function ShopItems({ items }: ShopItemsProps) {
   return (
     <Grid container className="Items">
       <Filters />
-      {filteredEcommerceItems.map((item) => (
-        <Item item={item} key={item.id} />
-      ))}
+      {items.length > 0
+        ? items.map((item) => <Item item={item} key={item.id} />)
+        : "No items in this list"}
+      {}
     </Grid>
   );
 }

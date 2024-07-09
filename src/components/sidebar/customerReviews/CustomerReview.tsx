@@ -3,7 +3,7 @@ import { Collapse } from "antd";
 import ReviewButton from "./reviewButton/ReviewButton";
 import { Grid } from "@mui/material";
 
-const starsOptios = [1, 2, 3, 4, 5];
+const starsOptios = [1, 2, 3, 4];
 
 function CustomerReview() {
   const { Panel } = Collapse;

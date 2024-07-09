@@ -8,6 +8,7 @@ type EcommerceContextProps = {
   filteredEcommerceItems: EcommerceItem[];
   filterData: (key: string, reason?: string) => void;
   filterDataByPrice: (price: number) => void;
+  filterDataByReviews: (stars: number) => void;
 
   sortData: (key: string) => void;
 };
@@ -18,6 +19,7 @@ const initialContextValue = {
   filterData: () => {},
   sortData: () => {},
   filterDataByPrice: () => {},
+  filterDataByReviews: () => {},
 };
 
 const EcommerceItemsContext =

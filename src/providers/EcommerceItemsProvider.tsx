@@ -29,10 +29,17 @@ export const EcommerceItemsProvider = ({
   );
 
   const filterDataByPrice = useCallback((price: number) => {
-    console.log(price);
     let temp = [...ecommerceItems];
 
     temp = ecommerceItems.filter((item) => item.price > price);
+
+    setFilteredEcommerceItems(temp);
+  }, []);
+
+  const filterDataByReviews = useCallback((stars: number) => {
+    let temp = [...ecommerceItems];
+
+    temp = ecommerceItems.filter((item) => item.review > stars);
 
     setFilteredEcommerceItems(temp);
   }, []);
@@ -45,6 +52,7 @@ export const EcommerceItemsProvider = ({
         filterData,
         sortData,
         filterDataByPrice,
+        filterDataByReviews,
         filteredEcommerceItems,
         ecommerceItems,
       }}
